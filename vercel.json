@@ -1,0 +1,58 @@
+{
+  "rewrites": [
+    {
+      "source": "/LevelMap/dist/(.*)",
+      "destination": "/LevelMap/dist/$1"
+    },
+    {
+      "source": "/LevelMap/dist",
+      "destination": "/LevelMap/dist/index.html"
+    },
+    {
+      "source": "/LevelMap/(.*)",
+      "destination": "/LevelMap/dist/$1"
+    },
+    {
+      "source": "/LevelMap",
+      "destination": "/LevelMap/dist/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/LevelMap/dist/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/unity-builds/(.*)",
+      "headers": [
+        {
+          "key": "Cross-Origin-Embedder-Policy",
+          "value": "require-corp"
+        },
+        {
+          "key": "Cross-Origin-Opener-Policy",
+          "value": "same-origin"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
+    },
+    {
+      "source": "/(.*\\.wasm)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/wasm"
+        }
+      ]
+    }
+  ]
+}
+

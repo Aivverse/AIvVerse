@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ALvVERSE: Dive into Learning Adventures</title>
+    <meta name="description" content="ALvVERSE: Dive into Learning Adventures - An interactive learning platform" />
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-content">
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#faq">FAQ</a>
+                <a href="login.html">MAP</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="section">
+        <div class="container">
+            <h1 class="main-title">ALvVERSE: Dive into Learning Adventures</h1>
+            
+            <div class="images-container">
+                <img src="images/cloud2.png" alt="Cloud" class="cloud-main" />
+                <img src="images/cloud1.png" alt="Cloud" class="cloud-small" />
+                <img src="images/robo.png" alt="Robot" class="robo" />
+                <img src="images/brain.png" alt="Brain" class="brain" />
+                <img src="images/cube.png" alt="Cube" class="cube" />
+                <img src="images/shield.png" alt="Shield" class="shield" />
+                <img src="images/balance.png" alt="Balance" class="balance" />
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2>About</h2>
+            <div class="about-content">
+                <p>AlvVerse is a gamified learning world where students explore AI through simple videos and interactive challenges. Each module unlocks new missions that teach real concepts like cybersecurity, ethics, and responsible AI use. The experience is designed to be beginner-friendly, making complex technology easy to understand. Players learn by doing—solving problems, making decisions, and seeing how AI works in everyday life. AlvVerse turns education into an adventure, helping learners become confident and informed digital citizens</p>
+            </div>
+            <div class="about-images">
+                <img src="images/airship.png" alt="Airship" class="airship" />
+                <img src="images/drone.png" alt="Drone" class="drone" />
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section">
+        <div class="container">
+            <h2>FAQ</h2>
+            <div class="faq-content">
+                <div class="faq-item">
+                    <h4 class="faq-question">1. What is this gamified learning project about?</h4>
+                    <p class="faq-answer">It's an interactive learning experience that teaches the basics of AI, cybersecurity, and responsible technology use through short videos and fun mini-games.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4 class="faq-question">2. Who is this AI-learning game designed for?</h4>
+                    <p class="faq-answer">It's designed for students and beginners who want to understand AI in a simple, engaging, and game-based way—no advanced knowledge required.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4 class="faq-question">3. How do the modules and games work together?</h4>
+                    <p class="faq-answer">Each module starts with a short video that explains a topic, and then a game reinforces what you learned by letting you apply it in a fun challenge.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4 class="faq-question">4. Do I need any prior AI or coding knowledge to play?</h4>
+                    <p class="faq-answer">No. The modules are beginner-friendly and guide you step-by-step, making it easy for anyone to learn.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4 class="faq-question">5. Is my data safe while using the platform?</h4>
+                    <p class="faq-answer">Yes. The project teaches and follows safe digital practices. It avoids collecting unnecessary personal information.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-config.js"></script>
+    <script>
+        // Handle OAuth callback when Supabase redirects here with tokens in hash
+        (async function() {
+            const hashParams = new URLSearchParams(window.location.hash.substring(1));
+            if (hashParams.has('access_token')) {
+                // OAuth callback - redirect to login.html to process it
+                console.log('[Auth] OAuth callback detected, redirecting to login...');
+                window.location.href = '/login.html' + window.location.hash;
+                return;
+            }
+        })();
+    </script>
+    <script src="js/navbar.js"></script>
+</body>
+</html>
+

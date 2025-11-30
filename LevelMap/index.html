@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ALvVERSE - Level Map</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      const SUPABASE_URL = 'https://xierzrkqijhymluffqyl.supabase.co';
+      const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhpZXJ6cmtxaWpoeW1sdWZmcXlsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ0NDIzNDEsImV4cCI6MjA4MDAxODM0MX0.n1iMrNmtIqrUiFvolu2Tm_d0wLfvEydsfwk5xiGwHEI';
+      const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+      (async function checkAuth() {
+        const { data: { session } } = await supabase.auth.getSession();
+        if (!session) {
+          window.location.href = '/login.html';
+        }
+      })();
+    </script>
+  </body>
+</html>

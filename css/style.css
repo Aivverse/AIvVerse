@@ -1,0 +1,300 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 1.1rem;
+  color: #333;
+  overflow-x: hidden;
+  background-image: url(../images/bg.png);
+  background-size: cover;
+  background-position: top center;
+  background-attachment: scroll;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+/* Navigation */
+#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: transparent;
+  padding: 1rem 2rem;
+  z-index: 1000;
+}
+
+.nav-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: color 0.3s;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.nav-links a:hover {
+  color: #61bde4;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+/* Sections */
+.section {
+  min-height: 100vh;
+  padding: 6rem 2rem 4rem 2rem;
+  position: relative;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Home Section */
+#home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.main-title {
+  font-size: 4rem;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 2rem;
+  z-index: 10;
+  position: relative;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+}
+
+.images-container {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  margin-top: 3rem;
+}
+
+.images-container img {
+  position: absolute;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Image Positioning */
+.cloud-main {
+  width: 1000px;
+  top: -300px;
+  left: -40%;
+  transform: translateX(-50%);
+  z-index: 1;
+  opacity: 0.8;
+}
+
+.cloud-small {
+  width: 500px;
+  top: 150px;
+  right: -20%;
+  z-index: 1;
+  opacity: 0.7;
+}
+
+.robo {
+  width: 800px;
+  top: -100px;
+  left: 30%;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+
+.brain {
+  width: 150px;
+  top: 30px;
+  left: 30%;
+  z-index: 2;
+}
+
+.cube {
+  width: 150px;
+  top: 40px;
+  left: 80%;
+  z-index: 2;
+}
+
+.shield {
+  width: 120px;
+  top: 550px;
+  left: 10%;
+  z-index: 3;
+}
+
+.balance {
+  width: 110px;
+  top: 630px;
+  right: 15%;
+  z-index: 3;
+}
+
+/* About Section */
+#about {
+  padding: 6rem 2rem;
+}
+
+#about h2 {
+  font-size: 3rem;
+  color: #ffffff;
+  margin-bottom: 2rem;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.about-content {
+  max-width: 800px;
+  margin: 0 auto 3rem auto;
+  text-align: center;
+  line-height: 1.8;
+  color: #ffffff;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.about-images {
+  position: relative;
+  height: 300px;
+  margin-top: 3rem;
+}
+
+.about-images img {
+  position: absolute;
+  animation: float 8s ease-in-out infinite;
+}
+
+.airship {
+  width: 700px;
+  top: -100px;
+  right: -20%;
+  z-index: 2;
+}
+
+.drone {
+  width: 500px;
+  top: 100px;
+  left: -20%;
+  z-index: 2;
+}
+
+/* FAQ Section */
+#faq {
+  padding: 6rem 2rem;
+}
+
+#faq h2 {
+  font-size: 3rem;
+  color: #ffffff;
+  margin-bottom: 3rem;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.faq-content {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  gap: 3rem;
+}
+
+.faq-category h3 {
+  font-size: 2rem;
+  color: #ffffff;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #61bde4;
+  padding-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.faq-item {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.faq-question {
+  font-size: 1.3rem;
+  color: #144767;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+}
+
+.faq-answer {
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 2rem;
+  }
+  
+  #about h2,
+  #faq h2 {
+    font-size: 2rem;
+  }
+  
+  .nav-links {
+    gap: 1rem;
+  }
+  
+  .nav-links a {
+    font-size: 0.9rem;
+  }
+  
+  .images-container img {
+    max-width: 40vw;
+  }
+  
+  .robo {
+    width: 150px;
+    top: 100px;
+  }
+  
+  .cloud-main {
+    width: 300px;
+  }
+  
+  .cloud-small {
+    width: 200px;
+  }
+}
+

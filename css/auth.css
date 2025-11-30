@@ -1,0 +1,339 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 1.1rem;
+  color: #333;
+  overflow-x: hidden;
+  background-image: url(../images/bg.png);
+  background-size: cover;
+  background-position: top center;
+  background-attachment: scroll;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navigation */
+#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: transparent;
+  padding: 1rem 2rem;
+  z-index: 1000;
+}
+
+.nav-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: color 0.3s;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.nav-links a:hover {
+  color: #61bde4;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+/* Auth Container */
+.auth-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2rem 4rem 2rem;
+  min-height: 100vh;
+}
+
+.auth-box {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 3rem;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.auth-title {
+  font-size: 2.5rem;
+  color: #144767;
+  text-align: center;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Tab Buttons */
+.tab-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 0.8rem;
+  border: none;
+  background: #e0e0e0;
+  color: #666;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.tab-btn:hover {
+  background: #d0d0d0;
+}
+
+.tab-btn.active {
+  background: #61bde4;
+  color: white;
+  box-shadow: 0 4px 10px rgba(97, 189, 228, 0.3);
+}
+
+/* Form Container */
+.form-container {
+  display: none;
+}
+
+.form-container.active {
+  display: block;
+  animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Form Groups */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  color: #144767;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #61bde4;
+  box-shadow: 0 0 0 3px rgba(97, 189, 228, 0.1);
+}
+
+/* Error Message */
+.error-message {
+  color: #e74c3c;
+  background: rgba(231, 76, 60, 0.1);
+  padding: 0.8rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  display: none;
+}
+
+.error-message.show {
+  display: block;
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+/* Google Button */
+.google-btn {
+  width: 100%;
+  padding: 0.9rem;
+  border: 2px solid #ddd;
+  background: white;
+  color: #444;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.google-btn:hover {
+  background: #f8f9fa;
+  border-color: #4285F4;
+  box-shadow: 0 2px 8px rgba(66, 133, 244, 0.2);
+  transform: translateY(-2px);
+}
+
+.google-btn:active {
+  transform: translateY(0);
+}
+
+.google-icon {
+  flex-shrink: 0;
+}
+
+/* Divider */
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 1.5rem 0;
+  color: #999;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #ddd;
+}
+
+.divider span {
+  padding: 0 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Auth Button */
+.auth-btn {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  background: linear-gradient(135deg, #61bde4 0%, #4a9dc7 100%);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  box-shadow: 0 4px 15px rgba(97, 189, 228, 0.3);
+}
+
+.auth-btn:hover {
+  background: linear-gradient(135deg, #4a9dc7 0%, #3d8ab5 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(97, 189, 228, 0.4);
+}
+
+.auth-btn:active {
+  transform: translateY(0);
+}
+
+.auth-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Switch Text */
+.switch-text {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.switch-text a {
+  color: #61bde4;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.switch-text a:hover {
+  color: #4a9dc7;
+  text-decoration: underline;
+}
+
+/* Loading State */
+.loading {
+  position: relative;
+  pointer-events: none;
+}
+
+.loading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border: 3px solid #fff;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .auth-box {
+    padding: 2rem;
+    margin: 1rem;
+  }
+
+  .auth-title {
+    font-size: 2rem;
+  }
+
+  .form-group input {
+    font-size: 0.95rem;
+  }
+}
+

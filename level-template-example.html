@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level Template - ALvVERSE</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .level-container {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 800px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .game-area {
+            background: #f5f5f5;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+        }
+        
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .score {
+            font-size: 2rem;
+            color: #667eea;
+            font-weight: bold;
+            text-align: center;
+            margin: 1rem 0;
+        }
+        
+        .message {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="level-container">
+        <h1>Level 1: Getting Started</h1>
+        
+        <div class="game-area">
+            <p class="message" id="message">Complete the challenge to earn points!</p>
+            <div class="score" id="score">Score: 0</div>
+            <button id="completeBtn" onclick="completeLevel()">Complete Level</button>
+        </div>
+        
+        <button onclick="goBackToMap()">Back to Map</button>
+    </div>
+
+    <!-- Supabase + Bridge -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-config.js"></script>
+    <script src="js/unity-bridge.js"></script>
+    
+    <!-- Level Logic (Sample Implementation) -->
+    <script>
+        const LEVEL_ID = 'level_1'; // Change this for each level
+        if (!sessionStorage.getItem('demoSessionId')) {
+            sessionStorage.setItem('demoSessionId', `session_${Date.now()}`);
+        }
+        let currentScore = 0;
+        let totalQuestions = 10;
+        let wrongAnswers = 0;
+        let sessionStart = new Date();
+        
+        async function checkAuth() {
+            const { data: { session } } = await supabase.auth.getSession();
+            if (!session) {
+                alert('Please login first!');
+                window.location.href = '/login.html';
+                return false;
+            }
+            return true;
+        }
+        
+        function buildPayload(passed) {
+            return {
+                userID: localStorage.getItem('userId') || 'demo-user',
+                sessionID: sessionStorage.getItem('demoSessionId') || `session_${Date.now()}`,
+                levelID: LEVEL_ID,
+                totalQuestions,
+                wrongAnswers,
+                sceneRuns: 1,
+                timeToFindTrainingZonein3D: 45.5,
+                timeSpendinTraining2D: 32.3,
+                initialTimestamp: sessionStart.toISOString(),
+                finalTimestamp: new Date().toISOString(),
+                hintUsed: false,
+                finalScore: currentScore,
+                passed
+            };
+        }
+        
+        async function completeLevel() {
+            const btn = document.getElementById('completeBtn');
+            btn.disabled = true;
+            btn.textContent = 'Saving...';
+            
+            currentScore = 1000;
+            wrongAnswers = Math.floor(Math.random() * 3);
+            document.getElementById('score').textContent = `Score: ${currentScore}`;
+            
+            const payload = buildPayload(true);
+            const resultJson = await window.UnityGameAPI.onLevelComplete(JSON.stringify(payload));
+            const result = JSON.parse(resultJson);
+            
+            if (result.success) {
+                document.getElementById('message').textContent = '🎉 Level Complete! Score saved!';
+                btn.textContent = 'Level Completed!';
+                
+                setTimeout(() => {
+                    goBackToMap();
+                }, 2000);
+            } else {
+                document.getElementById('message').textContent = '❌ Error saving score. Try again.';
+                btn.disabled = false;
+                btn.textContent = 'Complete Level';
+            }
+        }
+        
+        function goBackToMap() {
+            window.location.href = '/LevelMap/dist/index.html';
+        }
+        
+        window.addEventListener('DOMContentLoaded', checkAuth);
+    </script>
+</body>
+</html>
+
